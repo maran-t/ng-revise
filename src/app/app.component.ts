@@ -1,13 +1,30 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  host: {
+    '(click)': 'load()'
+  }
 })
-export class AppComponent {
+export class AppComponent { // To implement - Forms, Service
   title = 'ng-revise';
+
+  constructor(private http: HttpClient) {
+    this.getHtml();
+  }
+
+  // @HostListener('click')
+  load() {
+    console.log('click ..')
+  }
+
+  getHtml() {
+    this.http.get('/', { responseType: 'text'})
+      .subscribe((res) => {
+        console.log(res)
+      })
+  }
 }
