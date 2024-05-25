@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,9 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent { // To implement - Forms, Service
   title = 'ng-revise';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private appService: AppService) {
     this.getHtml();
+    this.appService.incrVersion();
   }
 
   // @HostListener('click')
