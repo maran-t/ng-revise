@@ -10,7 +10,7 @@ import { AppService } from './app.service';
     '(click)': 'load()'
   }
 })
-export class AppComponent { // To implement - Forms
+export class AppComponent { // To implement - Forms, IO
   title = 'ng-revise';
 
   constructor(private http: HttpClient, private appService: AppService) {
